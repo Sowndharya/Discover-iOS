@@ -2,7 +2,7 @@
 //  DiscoverTests.swift
 //  DiscoverTests
 //
-//  Created by Rizwan Ahmed on 05/11/16.
+//  Created by Sowndharya on 05/11/16.
 //  Copyright © 2016 Sowndharya. All rights reserved.
 //
 

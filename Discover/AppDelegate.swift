@@ -2,11 +2,12 @@
 //  AppDelegate.swift
 //  Discover
 //
-//  Created by Rizwan Ahmed on 05/11/16.
+//  Created by Sowndharya on 05/11/16.
 //  Copyright © 2016 Sowndharya. All rights reserved.
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Parse configuration
+        Parse.enableLocalDatastore()
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "223b82be-bc20-4ca6-8e0f-a671a34fe3da"
+            $0.clientKey = "cBlgNH6NOw4U0p0ot54pGgU3PeOx2jGn"
+            $0.server = "https://api.parse.buddy.com/parse/"
+        }
+        Parse.initialize(with: configuration)
+
         return true
     }
 

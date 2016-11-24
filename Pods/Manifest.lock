@@ -1,0 +1,48 @@
+PODS:
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - JSQMessagesViewController (7.1.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - Parse (1.14.2):
+    - Bolts/Tasks (~> 1.8)
+  - ParseCrashReporting (1.9.2):
+    - Bolts/Tasks (~> 1.5)
+    - Parse (~> 1.9)
+  - ParseUI (1.2.0):
+    - Bolts/Tasks (~> 1.3)
+    - Parse (~> 1.9)
+
+DEPENDENCIES:
+  - Bolts
+  - JSQMessagesViewController (from `https://github.com/galambalazs/JSQMessagesViewController.git`, branch `smooth-scrolling`)
+  - JSQSystemSoundPlayer
+  - Parse
+  - ParseCrashReporting
+  - ParseUI
+
+EXTERNAL SOURCES:
+  JSQMessagesViewController:
+    :branch: smooth-scrolling
+    :git: https://github.com/galambalazs/JSQMessagesViewController.git
+
+CHECKOUT OPTIONS:
+  JSQMessagesViewController:
+    :commit: 8a4fb6178223117f439537b0f186d09400af6781
+    :git: https://github.com/galambalazs/JSQMessagesViewController.git
+
+SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  JSQMessagesViewController: ca11f86fa68ca70835f05e169df9244147c1dc40
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
+  ParseCrashReporting: 33b760facc649d4fd99eef8f35dcda6a406099e5
+  ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
+
+PODFILE CHECKSUM: 6fa7e31d159eaf0c18e561357ba505d81ed99417
+
+COCOAPODS: 1.2.0.beta.1

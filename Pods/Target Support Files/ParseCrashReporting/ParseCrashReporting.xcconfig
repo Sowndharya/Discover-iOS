@@ -1,0 +1,12 @@
+CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR/ParseCrashReporting
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Bolts" "$PODS_CONFIGURATION_BUILD_DIR/Parse"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Public"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/ParseCrashReporting"
+OTHER_LDFLAGS = -ObjC -l"ParseCrashReportingLib" -l"sqlite3" -l"stdc++.6" -l"z" -framework "CFNetwork" -framework "Foundation" -framework "Security" -framework "SystemConfiguration"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}
+PODS_TARGET_SRCROOT = ${PODS_ROOT}/ParseCrashReporting
+PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.${PRODUCT_NAME:rfc1034identifier}
+SKIP_INSTALL = YES

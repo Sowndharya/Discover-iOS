@@ -1,0 +1,6 @@
+framework module Pods_Discover_DiscoverUITests {
+  umbrella header "Pods-Discover-DiscoverUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
