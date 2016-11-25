@@ -24,12 +24,6 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         print("INSIDE VIEWDIDLOAD OF SELECT SINGLE VIEW CONTROLLER")
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         //self.searchBar.delegate = self
         print("CALLING LOAD USER () METHOD")
         self.loadUsers()
@@ -46,8 +40,12 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
     func loadUsers() {
         print("INSIDE LOAD USES METHOD")
         let user = PFUser.current()
+        let userGeoPoint = user!["location"] as! PFGeoPoint
         let query = PFQuery(className: PF_USER_CLASS_NAME)
         query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
+        query.whereKey("location", nearGeoPoint:userGeoPoint)
+        query.whereKey("wantsToTeach", equalTo: user!["wantsToLearn"]!)
+        
         
         query.order(byAscending: PF_USER_FULLNAME)
         query.limit = 1000
