@@ -62,11 +62,17 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
                     }
                 }
                 
-                //self.users += objects as! [PFUser]!
                 self.tableView.reloadData()
+                
             } else {
                 print("NETWORK ERROR")
-                //                ProgressHUD.showError("Network error")
+                let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                    print("OK")
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
             }
             
         }
@@ -84,7 +90,13 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
                 self.users += objects as! [PFUser]!
                 self.tableView.reloadData()
             } else {
-                //                ProgressHUD.showError("Network error")
+                let alertController = UIAlertController(title: "Network Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                    print("OK")
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
             }
             
         }

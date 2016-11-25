@@ -44,7 +44,7 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
         outgoingBubbleImage = bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         incomingBubbleImage = bubbleFactory?.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
         
-        //blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "profile_blank"), diameter: 30)
+        blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "profile_blank"), diameter: 30)
         
         isLoading = false
         self.loadMessages()
@@ -89,7 +89,13 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
                     }
                     self.automaticallyScrollsToMostRecentMessage = true
                 } else {
-                    //                    ProgressHUD.showError("Network error")
+                    let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                        print("OK")
+                    }
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
                 }
                 self.isLoading = false;
             })
@@ -143,7 +149,13 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
             
             videoFile.saveInBackground(block: { (succeeed: Bool, error: Error?) -> Void in
                 if error != nil {
-                    //                    ProgressHUD.showError("Network error")
+                    let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                        print("OK")
+                    }
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
                 }
             })
         }
@@ -153,7 +165,13 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
             pictureFile = PFFile(name: "picture.jpg", data: UIImageJPEGRepresentation(picture, 0.6)!)
             pictureFile.saveInBackground(block: { (suceeded: Bool, error: Error?) -> Void in
                 if error != nil {
-                    //                    ProgressHUD.showError("Picture save error")
+                    let alertController = UIAlertController(title: "Picture Save Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                        print("OK")
+                    }
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
                 }
             })
         }
@@ -173,7 +191,13 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.loadMessages()
             } else {
-                //                ProgressHUD.showError("Network error")
+                let alertController = UIAlertController(title: "Network Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                    print("OK")
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         

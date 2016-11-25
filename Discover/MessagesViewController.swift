@@ -54,7 +54,13 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
                 self.tableView.reloadData()
                 self.updateEmptyView()
             } else {
-                //                ProgressHUD.showError("Network error")
+                let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+                    print("OK")
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
             }
             self.refreshControl!.endRefreshing()
         }
@@ -83,8 +89,6 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     @IBAction func compose(_ sender: UIBarButtonItem) {
         
         self.performSegue(withIdentifier: "selectSingleSegue", sender: self)
-//        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Single recipient")
-//        actionSheet.show(in: self.view)
     }
     
     // MARK: - Prepare for segue to chatVC
@@ -104,19 +108,6 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         }
     }
     
-    // MARK: - UIActionSheetDelegate
-    
-//    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
-//        if buttonIndex != actionSheet.cancelButtonIndex {
-//            switch buttonIndex {
-//            case 1:
-//                self.performSegue(withIdentifier: "selectSingleSegue", sender: self)
-//            default:
-//                return
-//            }
-//        }
-//    }
-//    
     // MARK: - SelectSingleDelegate
     
     func didSelectSingleUser(_ user2: PFUser) {

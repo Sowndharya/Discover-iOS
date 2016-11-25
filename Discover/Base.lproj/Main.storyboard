@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZU-Ge-hMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="840.62968515742136"/>
+            <point key="canvasLocation" x="118" y="1046"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="ONA-yl-1Dk">
@@ -205,7 +205,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i12-zm-LXs">
                                 <rect key="frame" x="16" y="318" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="View Seekers"/>
+                                <state key="normal" title="View Tutors"/>
+                                <connections>
+                                    <action selector="viewTutors:" destination="Ja7-Ve-hVm" eventType="touchUpInside" id="It3-QO-b41"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUi-uW-sQF">
                                 <rect key="frame" x="162" y="251" width="50" height="21"/>
@@ -217,7 +220,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1S9-ro-IzP">
                                 <rect key="frame" x="16" y="280" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="View Tutors"/>
+                                <state key="normal" title="View All Messages"/>
                                 <connections>
                                     <segue destination="YNY-Ef-v1w" kind="show" id="7sT-g7-B1U"/>
                                 </connections>
@@ -236,13 +239,14 @@
                     <navigationItem key="navigationItem" id="CcV-9A-KCz"/>
                     <connections>
                         <outlet property="distanceValueLabel" destination="rUi-uW-sQF" id="2DD-jZ-ABs"/>
+                        <segue destination="Zpb-2V-OAG" kind="show" identifier="viewTutorsSegue" id="Ykh-cu-YIH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TeQ-lc-8EN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4341.6000000000004" y="553.67316341829087"/>
+            <point key="canvasLocation" x="1828" y="554"/>
         </scene>
-        <!--Messages - Tutors-->
+        <!--All messages-->
         <scene sceneID="qKG-mJ-Z6a">
             <objects>
                 <tableViewController storyboardIdentifier="MessagesViewController" id="YNY-Ef-v1w" customClass="MessagesViewController" customModule="Discover" customModuleProvider="target" sceneMemberID="viewController">
@@ -311,7 +315,7 @@
                             <outlet property="delegate" destination="YNY-Ef-v1w" id="OpJ-g7-UVo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Messages - Tutors" id="O8X-6S-8ft">
+                    <navigationItem key="navigationItem" title="All messages" id="O8X-6S-8ft">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="YQd-fZ-8Nq">
                             <connections>
                                 <action selector="compose:" destination="YNY-Ef-v1w" id="HHh-j3-UcG"/>
@@ -322,12 +326,12 @@
                         <outlet property="composeButton" destination="YQd-fZ-8Nq" id="f78-PM-kIY"/>
                         <outlet property="emptyView" destination="08I-uA-J5i" id="j6u-pF-5o2"/>
                         <segue destination="Zpb-2V-OAG" kind="show" identifier="selectSingleSegue" id="W9m-rK-jR7"/>
-                        <segue destination="olh-bA-UZ9" kind="push" identifier="messagesChatSegue" id="sBb-Xd-RIh"/>
+                        <segue destination="olh-bA-UZ9" kind="show" identifier="messagesChatSegue" id="sBb-Xd-RIh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mpf-Hs-U4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5696.8000000000002" y="553.67316341829087"/>
+            <point key="canvasLocation" x="2729" y="554"/>
         </scene>
         <!--Select Tutor-->
         <scene sceneID="RtI-YC-3Sz">
@@ -367,7 +371,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRH-9w-rrR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8042.3999999999996" y="903.59820089955031"/>
+            <point key="canvasLocation" x="3764" y="1362"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="mMn-S8-PC2">
@@ -386,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcq-Rl-ICu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7154.3999999999996" y="205.54722638680661"/>
+            <point key="canvasLocation" x="3764" y="554"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9c6-qL-425">
@@ -404,7 +408,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VxN-dH-HoO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7154.3999999999996" y="903.59820089955031"/>
+            <point key="canvasLocation" x="2729" y="1363"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gBX-cv-5G3">
@@ -422,7 +426,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpK-82-oxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3402.4000000000001" y="553.67316341829087"/>
+            <point key="canvasLocation" x="1039" y="554"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ykh-cu-YIH"/>
+    </inferredMetricsTieBreakers>
 </document>
