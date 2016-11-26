@@ -15,7 +15,7 @@ protocol SelectTutorViewControllerDelegate {
 
 class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
+
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var distanceLabelView: UILabel!
     @IBOutlet weak var distanceSliderView: UISlider!
