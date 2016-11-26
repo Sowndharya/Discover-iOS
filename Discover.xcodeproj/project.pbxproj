@@ -198,8 +198,8 @@
 		650F9F611DCDE023005700A2 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				65BA250F1DE99B83007E9FF1 /* SelectTutorViewController.swift */,
 				653A88401DE88EEC00CCC1C4 /* Resources */,
+				65BA250F1DE99B83007E9FF1 /* SelectTutorViewController.swift */,
 				6509E1CD1DE01C2200194F25 /* MessagesViewController.swift */,
 				650F9F621DCDE023005700A2 /* AppDelegate.swift */,
 				650F9F901DCDE1B9005700A2 /* LoginViewController.swift */,

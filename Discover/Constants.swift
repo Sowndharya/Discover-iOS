@@ -33,6 +33,8 @@ let PF_CHAT_CLASS_NAME					= "Chat"					//	Class name
 let PF_CHAT_USER						= "user"					//	Pointer to User Class
 let PF_CHAT_GROUPID						= "groupId"                 //	String
 let PF_CHAT_TEXT						= "text"					//	String
+let PF_CHAT_PICTURE						= "picture"                 //	File
+let PF_CHAT_VIDEO						= "video"                   //	File
 let PF_CHAT_CREATEDAT					= "createdAt"               //	Date
 
 /* Messages*/

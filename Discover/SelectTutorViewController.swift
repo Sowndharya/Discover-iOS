@@ -63,7 +63,7 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
         
         query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
         query.whereKey(PF_USER_LOCATION, nearGeoPoint:userGeoPoint)
-        query.whereKey(PF_USER_WANTS_TO_TEACH, equalTo: userWantsToLearn)
+        query.whereKey(PF_USER_WANTS_TO_TEACH, equalTo: userWantsToLearn!)
         
         query.order(byAscending: PF_USER_FULLNAME)
         query.limit = 1000
