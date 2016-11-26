@@ -9,7 +9,8 @@
 import UIKit
 import Parse
 
-class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate{
+class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectTutorViewControllerDelegate{
+    
     
     var messages = [PFObject]()
     
@@ -18,6 +19,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("INSIDE VIEW DID LOAD MESSAGES VIEW")
         
         NotificationCenter.default.addObserver(self, selector: #selector(MessagesViewController.cleanup), name: NSNotification.Name(rawValue: NOTIFICATION_USER_LOGGED_OUT), object: nil)
         
@@ -33,11 +35,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if PFUser.current() != nil {
-            self.loadMessages()
-        } else {
-            Utilities.loginUser(self)
-        }
+        print("INSIDE VIEW DID APPEAR MESSAGES VIEW")
     }
     
     // MARK: - Backend methods
@@ -88,7 +86,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     @IBAction func compose(_ sender: UIBarButtonItem) {
         
-        self.performSegue(withIdentifier: "selectSingleSegue", sender: self)
+        self.performSegue(withIdentifier: "tutorListSegue", sender: self)
     }
     
     // MARK: - Prepare for segue to chatVC
@@ -99,10 +97,10 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
             chatVC.hidesBottomBarWhenPushed = true
             let groupId = sender as! String
             chatVC.groupId = groupId
-        } else if segue.identifier == "selectSingleSegue" {
+        } else if segue.identifier == "tutorListSegue" {
             let nav = segue.destination as! UINavigationController
             
-            let selectSingleVC = nav.viewControllers[0] as! SelectSingleViewController
+            let selectSingleVC = nav.viewControllers[0] as! SelectTutorViewController
             
             selectSingleVC.delegate = self
         }
@@ -110,11 +108,12 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     // MARK: - SelectSingleDelegate
     
-    func didSelectSingleUser(_ user2: PFUser) {
+    func didSelectTutor(_ user2: PFUser) {
         let user1 = PFUser.current()!
         let groupId = Messages.startPrivateChat(user1, user2: user2)
         self.openChat(groupId)
     }
+    
     
         
     // MARK: - Table view data source
@@ -128,6 +127,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "messagesCell") as! MessagesCell
         cell.bindData(self.messages[indexPath.row])
         return cell

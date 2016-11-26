@@ -24,7 +24,7 @@
                   moduleName = "Discover"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/HomeViewController.swift"
-                  timestampString = "501779253.781528"
+                  timestampString = "501848109.662404"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
@@ -39,7 +39,7 @@
                   moduleName = "Discover"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/HomeViewController.swift"
-                  timestampString = "501779253.78446"
+                  timestampString = "501848109.66405"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -54,7 +54,7 @@
                   moduleName = "Discover"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/HomeViewController.swift"
-                  timestampString = "501779253.787127"
+                  timestampString = "501848109.665601"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -69,7 +69,7 @@
                   moduleName = "Discover"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/HomeViewController.swift"
-                  timestampString = "501779253.790323"
+                  timestampString = "501848109.667192"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
@@ -86,11 +86,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Discover/MessagesViewController.swift"
-            timestampString = "501778612.484828"
+            timestampString = "501828430.831837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "compose(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -102,12 +102,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Discover/SelectSingleViewController.swift"
-            timestampString = "501764993.246963"
+            timestampString = "501846994.715402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "loadUsers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Discover/SelectSingleViewController.swift"
+            timestampString = "501838149.010955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
