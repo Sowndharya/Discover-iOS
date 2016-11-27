@@ -185,13 +185,15 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
                     print("SIGNUP VIEW CONTROLLER --- SIGNUP SUCCESS")
                     self.dismiss(animated: true, completion: nil)
                     print("SIGNUP VIEW CONTROLLER --- STARTING HOME VIEW CONTROLLER")
-                    DispatchQueue.main.async { () -> Void in
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController");
-                        self.present(viewController, animated: true, completion: nil)
-                        
-                    }
+//                    DispatchQueue.main.async { () -> Void in
+//                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
+//                        print("PRESENTING HOME VIEW CONTROLLER")
+//                        self.present(viewController, animated: true, completion: nil)
+                    
+                    //}
                     
                 }
+                
             })
             
         }

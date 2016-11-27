@@ -13,12 +13,13 @@ protocol SelectTutorViewControllerDelegate {
     func didSelectTutor(_ user:PFUser)
 }
 
-class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
     
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var distanceLabelView: UILabel!
     @IBOutlet weak var distanceSliderView: UISlider!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     var distanceValue: Int = 1
@@ -49,6 +50,9 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         self.loadUsers()
+        
+        let subject = PFUser.current()?[PF_USER_WANTS_TO_LEARN] as! String
+        self.title = "Tutors - " + subject
     }
     // MARK: - Backend methods
     

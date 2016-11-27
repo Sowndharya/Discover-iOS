@@ -23,10 +23,6 @@
 		650F9F9F1DCDE789005700A2 /* Pods_Discover_DiscoverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650F9F9E1DCDE789005700A2 /* Pods_Discover_DiscoverTests.framework */; };
 		650F9FA11DCDEEE5005700A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650F9FA01DCDEEE5005700A2 /* CoreLocation.framework */; };
 		652E52691DCE13440068C1C1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652E52671DCE0EA80068C1C1 /* HomeViewController.swift */; };
-		653A88451DE88F1300CCC1C4 /* tab_group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653A88411DE88F1300CCC1C4 /* tab_group@2x.png */; };
-		653A88461DE88F1300CCC1C4 /* tab_messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653A88421DE88F1300CCC1C4 /* tab_messages@2x.png */; };
-		653A88471DE88F1300CCC1C4 /* tab_private@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653A88431DE88F1300CCC1C4 /* tab_private@2x.png */; };
-		653A88481DE88F1300CCC1C4 /* tab_profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653A88441DE88F1300CCC1C4 /* tab_profile@2x.png */; };
 		653A884A1DE88F5600CCC1C4 /* chat_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653A88491DE88F5600CCC1C4 /* chat_blank@2x.png */; };
 		653A884C1DE88F6600CCC1C4 /* messages_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653A884B1DE88F6600CCC1C4 /* messages_blank@2x.png */; };
 		653A884E1DE88F8800CCC1C4 /* profile_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653A884D1DE88F8800CCC1C4 /* profile_blank@2x.png */; };
@@ -96,10 +92,6 @@
 		650F9F9E1DCDE789005700A2 /* Pods_Discover_DiscoverTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Discover_DiscoverTests.framework; path = "Pods/../build/Debug-iphoneos/Pods_Discover_DiscoverTests.framework"; sourceTree = "<group>"; };
 		650F9FA01DCDEEE5005700A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		652E52671DCE0EA80068C1C1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		653A88411DE88F1300CCC1C4 /* tab_group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_group@2x.png"; sourceTree = "<group>"; };
-		653A88421DE88F1300CCC1C4 /* tab_messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_messages@2x.png"; sourceTree = "<group>"; };
-		653A88431DE88F1300CCC1C4 /* tab_private@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_private@2x.png"; sourceTree = "<group>"; };
-		653A88441DE88F1300CCC1C4 /* tab_profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_profile@2x.png"; sourceTree = "<group>"; };
 		653A88491DE88F5600CCC1C4 /* chat_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_blank@2x.png"; sourceTree = "<group>"; };
 		653A884B1DE88F6600CCC1C4 /* messages_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages_blank@2x.png"; sourceTree = "<group>"; };
 		653A884D1DE88F8800CCC1C4 /* profile_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_blank@2x.png"; sourceTree = "<group>"; };
@@ -243,10 +235,6 @@
 				653A884D1DE88F8800CCC1C4 /* profile_blank@2x.png */,
 				653A884B1DE88F6600CCC1C4 /* messages_blank@2x.png */,
 				653A88491DE88F5600CCC1C4 /* chat_blank@2x.png */,
-				653A88411DE88F1300CCC1C4 /* tab_group@2x.png */,
-				653A88421DE88F1300CCC1C4 /* tab_messages@2x.png */,
-				653A88431DE88F1300CCC1C4 /* tab_private@2x.png */,
-				653A88441DE88F1300CCC1C4 /* tab_profile@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -406,16 +394,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				653A88451DE88F1300CCC1C4 /* tab_group@2x.png in Resources */,
 				653A884E1DE88F8800CCC1C4 /* profile_blank@2x.png in Resources */,
 				650F9F6D1DCDE024005700A2 /* LaunchScreen.storyboard in Resources */,
 				650F9F6A1DCDE023005700A2 /* Assets.xcassets in Resources */,
 				650F9F681DCDE023005700A2 /* Main.storyboard in Resources */,
-				653A88481DE88F1300CCC1C4 /* tab_profile@2x.png in Resources */,
 				653A884C1DE88F6600CCC1C4 /* messages_blank@2x.png in Resources */,
 				653A884A1DE88F5600CCC1C4 /* chat_blank@2x.png in Resources */,
-				653A88471DE88F1300CCC1C4 /* tab_private@2x.png in Resources */,
-				653A88461DE88F1300CCC1C4 /* tab_messages@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

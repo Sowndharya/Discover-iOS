@@ -41,6 +41,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - Backend methods
     
     func loadMessages() {
+        print("INSIDE LOAD MESSAGES")
         let query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
         query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.current()!)
         query.includeKey(PF_MESSAGES_LASTUSER)
@@ -92,11 +93,20 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - Prepare for segue to chatVC
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
         if segue.identifier == "messagesChatSegue" {
             let chatVC = segue.destination as! ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
             let groupId = sender as! String
             chatVC.groupId = groupId
+            
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
+            
+            
         } else if segue.identifier == "tutorListSegue" {
             let nav = segue.destination as! UINavigationController
             

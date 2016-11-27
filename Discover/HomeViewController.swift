@@ -24,6 +24,18 @@ class HomeViewController: UIViewController {
         
         
     }
+    
+    
+    @IBAction func viewMessagesAction(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "viewMessagesSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Home"
+        navigationItem.backBarButtonItem = backItem
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -41,6 +53,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         if (PFUser.current() == nil) {
+            print("HOME VIEW CONTROLLER --- INSIDE VIEW DID APPEAR")
             
             Utilities.loginUser(self)
             

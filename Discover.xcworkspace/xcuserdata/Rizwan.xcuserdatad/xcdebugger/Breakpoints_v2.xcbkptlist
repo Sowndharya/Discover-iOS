@@ -24,12 +24,12 @@
                   moduleName = "Discover"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/HomeViewController.swift"
-                  timestampString = "501848109.662404"
+                  timestampString = "501955083.269583"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "70">
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "107">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -39,7 +39,7 @@
                   moduleName = "Discover"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/HomeViewController.swift"
-                  timestampString = "501848109.66405"
+                  timestampString = "501955083.271225"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -54,7 +54,7 @@
                   moduleName = "Discover"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/HomeViewController.swift"
-                  timestampString = "501848109.665601"
+                  timestampString = "501955083.273373"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -69,12 +69,12 @@
                   moduleName = "Discover"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/HomeViewController.swift"
-                  timestampString = "501848109.667192"
+                  timestampString = "501955083.275078"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "28">
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "105">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -86,11 +86,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Discover/MessagesViewController.swift"
-            timestampString = "501828430.831837"
+            timestampString = "501955081.586545"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "compose(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -123,6 +123,85 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Discover/SelectTutorViewController.swift"
+            timestampString = "501879720.596895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "SelectTutorViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Discover.SelectTutorViewController.distanceLabelView.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Discover"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/SelectTutorViewController.swift"
+                  timestampString = "501955083.283588"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Discover.SelectTutorViewController.distanceLabelView.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Discover"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/SelectTutorViewController.swift"
+                  timestampString = "501955083.285285"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Discover.SelectTutorViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Discover.SelectTutorViewController"
+                  moduleName = "Discover"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rizwan/Desktop/iOS%20Apps/Discover/Discover/SelectTutorViewController.swift"
+                  timestampString = "501955083.286859"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Discover/SelectTutorViewController.swift"
+            timestampString = "501941384.980112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

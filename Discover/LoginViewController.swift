@@ -80,11 +80,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     self.dismiss(animated: true, completion: nil)
                     
-                    DispatchQueue.main.async { () -> Void in
-                        print("LOGIN VIEW CONTROLLER --- " + "INITIATE HOME VIEW CONTROLLER")
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController");
-                        self.present(viewController, animated: true, completion: nil)
-                    }
+//                    DispatchQueue.main.async { () -> Void in
+//                        print("LOGIN VIEW CONTROLLER --- " + "INITIATE HOME VIEW CONTROLLER")
+//                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
+//                        self.present(viewController, animated: true, completion: nil)
+//                    }
                     
                     
                     
@@ -114,6 +114,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if (PFUser.current() != nil) {
+            self.dismiss(animated: true, completion: nil)
+
+            
+        } 
+
         print("LOGIN VIEW CONTROLLER --- " + "INSIDE VIEW DID APPEAR")
         self.emailTextField.becomeFirstResponder()
     }
