@@ -34,7 +34,6 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
     }
     
     @IBAction func signup(_ sender: UIButton) {
-    print("SIGNUP VIEW CONTROLLER ---" + " SIGNUPBUTTON PRESSED")
         
         self.signup()
         
@@ -43,7 +42,7 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print("SIGNUP VIEW CONTROLLER ---" + " INSIDE VIEW DID LOAD")
+        
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SignupViewController.dismissKeyboard)))
         
         self.usernameTextField.delegate = self
@@ -57,41 +56,48 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
-        
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
-        print("SIGNUP VIEW CONTROLLER ---" + " INSIDE VIEW DID APPEAR")
         self.usernameTextField.becomeFirstResponder()
     }
     
     func dismissKeyboard() {
-        print("SIGNUP VIEW CONTROLLER ---" + " INSIDE DISMISS KEYBOARD")
+        
         self.view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         if textField == self.usernameTextField {
+            
             self.emailTextField.becomeFirstResponder()
+            
         } else if textField == self.emailTextField {
+            
             self.passwordTextField.becomeFirstResponder()
+            
         } else if textField == self.passwordTextField {
+            
             self.wantsToLearnTextField.becomeFirstResponder()
+            
         } else if textField == self.wantsToLearnTextField {
+            
             self.wantsToTeachTextField.becomeFirstResponder()
+            
         }else if textField == self.wantsToTeachTextField {
+            
             self.signup()
         }
         return true
     }
     
     func getLocation() {
-        print("INSIDE GET LOCATION")
+        
         if CLLocationManager.locationServicesEnabled() {
-            print("LOCATION SERVICES ENABLED")
+            
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.requestAlwaysAuthorization()
@@ -100,7 +106,6 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
     }
     
     func signup() {
-        print("SIGNUP VIEW CONTROLLER ---" + " INSIDE SIGNUP METHOD")
         
         self.getLocation()
         
@@ -119,33 +124,36 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                 print("OK")
             }
+            
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
             
         } else if (password?.characters.count)! < 8 {
+            
             let alertController = UIAlertController(title: "Invalid", message: "Password must be greater than 8 characters", preferredStyle: UIAlertControllerStyle.alert)
             
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                 print("OK")
             }
+            
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
             
             
             
         } else if (email?.characters.count)! < 8 {
+            
             let alertController = UIAlertController(title: "Invalid", message: "Please enter a valid email address", preferredStyle: UIAlertControllerStyle.alert)
             
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                 print("OK")
             }
+            
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
             
             
         } else {
-            
-            print("SIGNUP VIEW CONTROLLER --- " + " SIGNING UP")
             
             // Run a spinner to show a task in progress
             let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 150, height: 150))) as UIActivityIndicatorView
@@ -158,9 +166,9 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
             newUser.username = username
             newUser.password = password
             newUser.email = finalEmail
-            newUser["wantsToLearn"] = wantsToLearn
-            newUser["wantsToTeach"] = wantsToTeach
-            newUser["location"] = point
+            newUser[PF_USER_WANTS_TO_LEARN] = wantsToLearn
+            newUser[PF_USER_WANTS_TO_TEACH] = wantsToTeach
+            newUser[PF_USER_LOCATION] = point
             newUser[PF_USER_FULLNAME] = username
             newUser[PF_USER_FULLNAME_LOWER] = username?.lowercased()
             newUser[PF_USER_EMAILCOPY] = finalEmail
@@ -171,27 +179,21 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
                 // Stop the spinner
                 spinner.stopAnimating()
                 if ((error) != nil) {
+                    
                     PushNotication.parsePushUserAssign()
                     let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
                     
                     let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                         print("OK")
                     }
+                    
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion: nil)
                     
                     
                 } else {
-                    print("SIGNUP VIEW CONTROLLER --- SIGNUP SUCCESS")
+                    
                     self.dismiss(animated: true, completion: nil)
-                    print("SIGNUP VIEW CONTROLLER --- STARTING HOME VIEW CONTROLLER")
-//                    DispatchQueue.main.async { () -> Void in
-//                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
-//                        print("PRESENTING HOME VIEW CONTROLLER")
-//                        self.present(viewController, animated: true, completion: nil)
-                    
-                    //}
-                    
                 }
                 
             })
@@ -201,16 +203,11 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
 
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("SIGNUP VIEW CONTROLLER ---" + " INSIDE LOCATION MANAGER")
-        
         
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        print(" SIGNUP VIEW CONTROLLER ---" + "locations = \(locValue.latitude) \(locValue.longitude)")
         
-        //let currentLocation = CLLocation()
         locationLat = locValue.latitude
         locationLon = locValue.latitude
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -226,6 +223,7 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
         
         
     }
+    
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
         
     }

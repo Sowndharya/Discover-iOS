@@ -13,18 +13,16 @@ class HomeViewController: UIViewController {
     
     
     // MARK : Actions
+    
     @IBAction func logoutAction(_ sender: UIButton) {
-        // Send a request to log out a user
         
+        // Send a request to log out a user
         PFUser.logOut()
         
         PushNotication.parsePushUserResign()
         Utilities.postNotification(NOTIFICATION_USER_LOGGED_OUT)
         Utilities.loginUser(self)
-        
-        
     }
-    
     
     @IBAction func viewMessagesAction(_ sender: UIButton) {
         
@@ -32,34 +30,32 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let backItem = UIBarButtonItem()
         backItem.title = "Home"
         navigationItem.backBarButtonItem = backItem
     }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-  
-
     
     override func viewDidAppear(_ animated: Bool) {
         
         if (PFUser.current() == nil) {
-            print("HOME VIEW CONTROLLER --- INSIDE VIEW DID APPEAR")
             
             Utilities.loginUser(self)
             
         } else {
-            print("HOME VIEW CONTROLLER --- " +  "CURRENT USER IS " + (PFUser.current()?.username)!)
+            
+            print((PFUser.current()?.username)!)
         }
     }
-
 }

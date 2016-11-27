@@ -65,6 +65,7 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
     // Mark: - Backend methods
     
     func loadMessages() {
+        
         if self.isLoading == false {
             self.isLoading = true
             let lastMessage = messages.last
@@ -214,12 +215,9 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
-        self.view.endEditing(true)
         
-        let action = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Take photo", "Choose existing photo", "Choose existing video")
-        action.show(in: self.view)
+        self.view.endEditing(true)
     }
-    
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return self.messages[indexPath.item]
@@ -277,28 +275,11 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
         return NSAttributedString(string: message.senderDisplayName)
     }
     
-    
-    //    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: IndexPath!) -> NSAttributedString! {
-    //        return nil
-    //    }
-    
     // MARK: - UICollectionView DataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.messages.count
     }
-    
-    //    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    //        var cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
-    //
-    //        var message = self.messages[indexPath.item]
-    //        if message.senderId == self.senderId {
-    //            cell.textView?.textColor = UIColor.whiteColor()
-    //        } else {
-    //            cell.textView?.textColor = UIColor.blackColor()
-    //        }
-    //        return cell
-    //    }
     
     // MARK: - UICollectionView flow layout
     
@@ -326,10 +307,6 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
         return kJSQMessagesCollectionViewCellLabelHeightDefault
     }
     
-    //    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAtIndexPath indexPath: IndexPath!) -> CGFloat {
-    //        return 0
-    //    }
-    
     // MARK: - Responding to CollectionView tap events
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
@@ -355,29 +332,5 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
         print("didTapCellAtIndexPath")
     }
     
-    // MARK: - UIActionSheetDelegate
-    
-    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
-        if buttonIndex != actionSheet.cancelButtonIndex {
-            //            if buttonIndex == 1 {
-            //                Camera.shouldStartCamera(self, canEdit: true, frontFacing: true)
-            //            } else if buttonIndex == 2 {
-            //                Camera.shouldStartPhotoLibrary(self, canEdit: true)
-            //            } else if buttonIndex == 3 {
-            //                Camera.shouldStartVideoLibrary(self, canEdit: true)
-            //            }
-        }
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate
-    
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [AnyHashable: Any]) {
-        let video = info[UIImagePickerControllerMediaURL] as? URL
-        let picture = info[UIImagePickerControllerEditedImage] as? UIImage
-        
-        self.sendMessage("", video: video, picture: picture)
-        
-        picker.dismiss(animated: true, completion: nil)
-    }
 }
 

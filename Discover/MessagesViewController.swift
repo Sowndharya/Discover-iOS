@@ -18,8 +18,8 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     @IBOutlet var emptyView: UIView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        print("INSIDE VIEW DID LOAD MESSAGES VIEW")
         
         NotificationCenter.default.addObserver(self, selector: #selector(MessagesViewController.cleanup), name: NSNotification.Name(rawValue: NOTIFICATION_USER_LOGGED_OUT), object: nil)
         
@@ -30,37 +30,46 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         self.tableView?.addSubview(self.refreshControl!)
         
         self.emptyView?.isHidden = true
+        self.loadMessages()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        print("INSIDE VIEW DID APPEAR MESSAGES VIEW")
+        super.viewDidAppear(animated)
     }
     
     // MARK: - Backend methods
     
     func loadMessages() {
-        print("INSIDE LOAD MESSAGES")
+        
         let query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
+        
         query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.current()!)
         query.includeKey(PF_MESSAGES_LASTUSER)
         query.order(byDescending: PF_MESSAGES_UPDATEDACTION)
+        
         query.findObjectsInBackground{ (objects: [PFObject]?, error: Error?) -> Void in
+            
             if error == nil {
+                
                 self.messages.removeAll(keepingCapacity: false)
                 self.messages += objects as [PFObject]!
                 self.tableView.reloadData()
                 self.updateEmptyView()
+                
             } else {
+                
+                // Error in loading messages
                 let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
                 
                 let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                     print("OK")
                 }
+                
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
             }
+            
             self.refreshControl!.endRefreshing()
         }
     }
@@ -68,18 +77,19 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - Helper methods
     
     func updateEmptyView() {
+        
         self.emptyView?.isHidden = (self.messages.count != 0)
     }
-    
-
     
     // MARK: - User actions
     
     func openChat(_ groupId: String) {
+        
         self.performSegue(withIdentifier: "messagesChatSegue", sender: groupId)
     }
     
     func cleanup() {
+        
         self.messages.removeAll(keepingCapacity: false)
         self.tableView.reloadData()
         self.updateEmptyView()
@@ -94,25 +104,25 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
         if segue.identifier == "messagesChatSegue" {
+            
             let chatVC = segue.destination as! ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
+            
             let groupId = sender as! String
             chatVC.groupId = groupId
-            
             
             let backItem = UIBarButtonItem()
             backItem.title = "Back"
             navigationItem.backBarButtonItem = backItem
             
-            
         } else if segue.identifier == "tutorListSegue" {
+            
             let nav = segue.destination as! UINavigationController
             
             let selectSingleVC = nav.viewControllers[0] as! SelectTutorViewController
-            
             selectSingleVC.delegate = self
+            
         }
     }
     
@@ -129,10 +139,12 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return self.messages.count
     }
     
@@ -144,10 +156,12 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
         return true
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         Messages.deleteMessageItem(self.messages[indexPath.row])
         self.messages.remove(at: indexPath.row)
         self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
@@ -157,6 +171,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
         let message = self.messages[indexPath.row] as PFObject

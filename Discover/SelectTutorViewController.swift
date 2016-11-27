@@ -29,18 +29,23 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     @IBAction func sliderValueDidChange(_ sender: UISlider) {
+        
         let currentValue = Int(sender.value)
         
         if currentValue == 1 {
-            self.distanceLabelView.text = "\(currentValue) km"
-        } else {
-            self.distanceLabelView.text = "\(currentValue) kms"
             
+            self.distanceLabelView.text = "\(currentValue) km"
+            
+        } else {
+            
+            self.distanceLabelView.text = "\(currentValue) kms"
         }
+        
         distanceValue = currentValue
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         // Register the table view cell class and its reuse id
@@ -54,10 +59,11 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
         let subject = PFUser.current()?[PF_USER_WANTS_TO_LEARN] as! String
         self.title = "Tutors - " + subject
     }
+    
     // MARK: - Backend methods
     
     func loadUsers() {
-        print("INSIDE LOAD USES METHOD")
+        
         let user = PFUser.current()
         let userWantsToLearn = user?[PF_USER_WANTS_TO_LEARN]
         let userGeoPoint = user![PF_USER_LOCATION] as! PFGeoPoint
@@ -73,13 +79,17 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
         query.limit = 1000
         
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) -> Void in
+            
             if error == nil {
-                print("RETRIEVING USERS")
+                
                 self.users.removeAll(keepingCapacity: false)
+                
                 if let array = objects as? [PFUser] {
+                    
                     for obj in array {
+                        
                         if ((obj as PFUser)[PF_USER_FULLNAME] as? String) != nil {
-                            print(PF_USER_FULLNAME)
+                            
                             self.users.append(obj as PFUser)
                         }
                     }
@@ -88,12 +98,14 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
                 self.tableView.reloadData()
                 
             } else {
-                print("NETWORK ERROR")
+                
+                // Error Loading Users
                 let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
                 
                 let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                     print("OK")
                 }
+                
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
             }
@@ -102,11 +114,13 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     @IBAction func onCancelButtonPressed(_ sender: UIBarButtonItem) {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return self.users.count
     }
     
@@ -127,6 +141,7 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: - Table view delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         self.dismiss(animated: true, completion: { () -> Void in
             if self.delegate != nil {
                 self.delegate.didSelectTutor(self.users[indexPath.row])
