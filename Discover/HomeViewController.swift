@@ -52,18 +52,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
         
-        
-
-//        let user = PFUser.current()
-//        print((PFUser.current()?.username)!)
-//        userWantsToLearn = user?[PF_USER_WANTS_TO_LEARN] as! String
-//        userWantsToteach = user?[PF_USER_WANTS_TO_TEACH] as! String
-//        
-//        
-//        wantsToLearnTextField.text = userWantsToLearn as String?
-//        
-//        wantsToTeachTextField.text = userWantsToteach as String?
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,12 +68,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         } else {
             
             print((PFUser.current()?.username)!)
+            
             userWantsToLearn = PFUser.current()?[PF_USER_WANTS_TO_LEARN] as! String
             userWantsToteach = PFUser.current()?[PF_USER_WANTS_TO_TEACH] as! String
             
-            
             wantsToLearnTextField.text = userWantsToLearn as String?
-            
             wantsToTeachTextField.text = userWantsToteach as String?
         }
     }
