@@ -17,7 +17,7 @@ class MessagesCell: UITableViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var lastMessageLabel: UILabel!
     @IBOutlet var timeElapsedLabel: UILabel!
-    @IBOutlet var counterLabel: UILabel!
+    //@IBOutlet var counterLabel: UILabel!
     
     func bindData(_ message: PFObject) {
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
@@ -40,8 +40,8 @@ class MessagesCell: UITableViewCell {
             timeElapsedLabel.text = dateText
         }
         
-        let counter = (message[PF_MESSAGES_COUNTER]! as AnyObject).integerValue
-        counterLabel.text = (counter == 0) ? "" : "\(counter) new"
+        //let counter = (message[PF_MESSAGES_COUNTER]! as AnyObject).integerValue
+        //counterLabel.text = (counter == 0) ? "" : "\(counter) new"
     }
     
 }

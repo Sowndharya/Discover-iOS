@@ -13,13 +13,13 @@ protocol SelectTutorViewControllerDelegate {
     func didSelectTutor(_ user:PFUser)
 }
 
-class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
+class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var distanceLabelView: UILabel!
     @IBOutlet weak var distanceSliderView: UISlider!
-    @IBOutlet weak var searchBar: UISearchBar!
+    //@IBOutlet weak var searchBar: UISearchBar!
     
     
     var distanceValue: Int = 1
@@ -42,6 +42,7 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         distanceValue = currentValue
+        self.loadUsers()
     }
 
     override func viewDidLoad() {
@@ -72,7 +73,7 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
         let query = PFQuery(className: PF_USER_CLASS_NAME)
         
         query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
-        query.whereKey(PF_USER_LOCATION, nearGeoPoint:userGeoPoint)
+        query.whereKey(PF_USER_LOCATION, nearGeoPoint:userGeoPoint, withinKilometers: Double(distanceValue))
         query.whereKey(PF_USER_WANTS_TO_TEACH, equalTo: userWantsToLearn!)
         
         query.order(byAscending: PF_USER_FULLNAME)

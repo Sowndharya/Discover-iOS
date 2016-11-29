@@ -9,8 +9,20 @@
 import UIKit
 import Parse
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK : Properties
+    
+    
+    var userWantsToLearn : String = ""
+    var userWantsToteach : String = ""
+    
+    @IBOutlet weak var welcomelabel: UILabel!
+    
+    
+    @IBOutlet weak var wantsToTeachTextField: UITextField!
+    
+    @IBOutlet weak var wantsToLearnTextField: UITextField!
     
     // MARK : Actions
     
@@ -40,6 +52,18 @@ class HomeViewController: UIViewController {
         
         super.viewDidLoad()
         
+        
+
+//        let user = PFUser.current()
+//        print((PFUser.current()?.username)!)
+//        userWantsToLearn = user?[PF_USER_WANTS_TO_LEARN] as! String
+//        userWantsToteach = user?[PF_USER_WANTS_TO_TEACH] as! String
+//        
+//        
+//        wantsToLearnTextField.text = userWantsToLearn as String?
+//        
+//        wantsToTeachTextField.text = userWantsToteach as String?
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +80,13 @@ class HomeViewController: UIViewController {
         } else {
             
             print((PFUser.current()?.username)!)
+            userWantsToLearn = PFUser.current()?[PF_USER_WANTS_TO_LEARN] as! String
+            userWantsToteach = PFUser.current()?[PF_USER_WANTS_TO_TEACH] as! String
+            
+            
+            wantsToLearnTextField.text = userWantsToLearn as String?
+            
+            wantsToTeachTextField.text = userWantsToteach as String?
         }
     }
 }

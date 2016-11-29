@@ -160,7 +160,7 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
             spinner.startAnimating()
             
             let point = PFGeoPoint(latitude:locationLat, longitude:locationLon)
-            locationManager.stopUpdatingLocation()
+            
             
             let newUser = PFUser()
             newUser.username = username
@@ -172,6 +172,9 @@ class SignupViewController: UIViewController, CLLocationManagerDelegate, UITextF
             newUser[PF_USER_FULLNAME] = username
             newUser[PF_USER_FULLNAME_LOWER] = username?.lowercased()
             newUser[PF_USER_EMAILCOPY] = finalEmail
+            
+            
+            locationManager.stopUpdatingLocation()
             
             // Sign up the user asynchronously
             newUser.signUpInBackground(block: { (succeed, error) -> Void in
