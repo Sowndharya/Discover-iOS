@@ -13,18 +13,71 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     // MARK : Properties
     
+    var userWantsToLearn: String = ""
+    var userWantsToTeach: String = ""
     
-    var userWantsToLearn : String = ""
-    var userWantsToteach : String = ""
+    var wantsToLearnIsEdit: Bool = true
+    var wantsToTeachIsEdit: Bool = true
     
     @IBOutlet weak var welcomelabel: UILabel!
-    
     
     @IBOutlet weak var wantsToTeachTextField: UITextField!
     
     @IBOutlet weak var wantsToLearnTextField: UITextField!
     
     // MARK : Actions
+    
+    
+    
+    
+    @IBAction func wantsToLearnEditButtonClicked(_ sender: UIButton) {
+        if wantsToLearnIsEdit {
+            
+            wantsToLearnIsEdit = false
+            sender.setTitle("Done", for: UIControlState.normal)
+            wantsToLearnTextField.isUserInteractionEnabled = true
+            wantsToLearnTextField.becomeFirstResponder()
+        }
+        else {
+            
+            wantsToLearnIsEdit = true
+            sender.setTitle("Edit", for: UIControlState.normal)
+            wantsToLearnTextField.isUserInteractionEnabled = false
+            userWantsToLearn = wantsToLearnTextField.text!
+            wantsToLearnTextField.resignFirstResponder()
+            
+            let user = PFUser.current()
+            user?[PF_USER_WANTS_TO_LEARN] = userWantsToLearn
+            user?.saveInBackground()
+        }
+    }
+    
+    @IBAction func wantsToTeachEditButtonClicked(_ sender: UIButton) {
+        
+        if wantsToTeachIsEdit {
+            
+            wantsToTeachIsEdit = false
+            sender.setTitle("Done", for: UIControlState.normal)
+            wantsToTeachTextField.isUserInteractionEnabled = true
+            wantsToTeachTextField.becomeFirstResponder()
+        }
+        else {
+            
+            wantsToTeachIsEdit = true
+            sender.setTitle("Edit", for: UIControlState.normal)
+            wantsToTeachTextField.isUserInteractionEnabled = false
+            userWantsToTeach = wantsToTeachTextField.text!
+            wantsToTeachTextField.resignFirstResponder()
+            
+            let user = PFUser.current()
+            user?[PF_USER_WANTS_TO_TEACH] = userWantsToTeach
+            user?.saveInBackground()
+        }
+
+    
+    }
+    
+
     
     @IBAction func logoutAction(_ sender: UIButton) {
         
@@ -67,13 +120,17 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             
-            print((PFUser.current()?.username)!)
+            let user = PFUser.current()
+
+            print((user?.username)!)
             
-            userWantsToLearn = PFUser.current()?[PF_USER_WANTS_TO_LEARN] as! String
-            userWantsToteach = PFUser.current()?[PF_USER_WANTS_TO_TEACH] as! String
+            welcomelabel.text = "Wecome, " + (user?.username)!
+            
+            userWantsToLearn = user?[PF_USER_WANTS_TO_LEARN] as! String
+            userWantsToTeach = user?[PF_USER_WANTS_TO_TEACH] as! String
             
             wantsToLearnTextField.text = userWantsToLearn as String?
-            wantsToTeachTextField.text = userWantsToteach as String?
+            wantsToTeachTextField.text = userWantsToTeach as String?
         }
     }
 }
