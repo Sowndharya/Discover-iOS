@@ -136,7 +136,6 @@ class Messages {
                 }
             } else {
                 print("ClearMessageCounter save error.")
-                //                print(error!)
             }
         }
     }

@@ -8,6 +8,10 @@
 
 import Foundation
 
+
+let SIGNUP_VIEW_CONTROLLER              = "SignupViewController"    //  String
+let LOGIN_VIEW_CONTROLLER               = "LoginViewController"     //  String
+
 /* Installation */
 let PF_INSTALLATION_CLASS_NAME			= "_Installation"           //	Class name
 let PF_INSTALLATION_OBJECTID			= "objectId"				//	String
@@ -27,6 +31,11 @@ let PF_USER_THUMBNAIL					= "thumbnail"               //	File
 let PF_USER_LOCATION                    = "location"                //  GeoPoint
 let PF_USER_WANTS_TO_TEACH              = "wantsToTeach"            //  String
 let PF_USER_WANTS_TO_LEARN              = "wantsToLearn"            //  String
+
+let PF_USER_LOCALITY                    = "locality"                //  String
+let PF_USER_POSTAL_CODE                 = "postalCode"              //  String
+let PF_USER_ADMINISTRATIVE_AREA         = "administrativeArea"      //  String
+let PF_USER_COUNTRY                     = "country"                 //  String
 
 /* Chat */
 let PF_CHAT_CLASS_NAME					= "Chat"					//	Class name

@@ -19,8 +19,6 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var distanceLabelView: UILabel!
     @IBOutlet weak var distanceSliderView: UISlider!
-    //@IBOutlet weak var searchBar: UISearchBar!
-    
     
     var distanceValue: Int = 1
     var users = [PFUser]()
@@ -101,16 +99,8 @@ class SelectTutorViewController: UIViewController, UITableViewDelegate, UITableV
             } else {
                 
                 // Error Loading Users
-                let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
-                
-                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                    print("OK")
-                }
-                
-                alertController.addAction(okAction)
-                self.present(alertController, animated: true, completion: nil)
+                Utilities.showAlertActionDefault(self, "Error", (error?.localizedDescription)!)
             }
-            
         }
     }
 

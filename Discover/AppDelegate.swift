@@ -26,7 +26,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://api.parse.buddy.com/parse/"
         }
         Parse.initialize(with: configuration)
-
+        
+        if (PFUser.current() == nil) {
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController")
+            self.window?.rootViewController = loginViewController
+            self.window?.makeKeyAndVisible()
+            
+        } else {
+            //Utilities.homeScreenLaunch(self)
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController:UINavigationController = mainStoryBoard.instantiateInitialViewController() as! UINavigationController
+            let homeViewController = mainStoryBoard.instantiateViewController(withIdentifier: "HomeViewController")
+            navigationController.viewControllers = [homeViewController]
+            self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
+            
+            
+        }
         return true
     }
 

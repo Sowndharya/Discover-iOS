@@ -60,14 +60,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
             } else {
                 
                 // Error in loading messages
-                let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
-                
-                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                    print("OK")
-                }
-                
-                alertController.addAction(okAction)
-                self.present(alertController, animated: true, completion: nil)
+                Utilities.showAlertActionDefault(self, "Error", (error?.localizedDescription)!)
             }
             
             self.refreshControl!.endRefreshing()

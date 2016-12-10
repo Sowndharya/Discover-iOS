@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		59B834CFCB4FAE5B8AD1D026 /* Pods_Discover_DiscoverUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421137D9CDE0EF9CFD1690BC /* Pods_Discover_DiscoverUITests.framework */; };
+		6509055E1DF74A1D00656AB4 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6509055D1DF74A1D00656AB4 /* UserLocationManager.swift */; };
 		6509E1CE1DE01C2200194F25 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6509E1CD1DE01C2200194F25 /* MessagesViewController.swift */; };
 		650F9F631DCDE023005700A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F9F621DCDE023005700A2 /* AppDelegate.swift */; };
 		650F9F681DCDE023005700A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650F9F661DCDE023005700A2 /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		421137D9CDE0EF9CFD1690BC /* Pods_Discover_DiscoverUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Discover_DiscoverUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F7BCFD9D65EC34C5867B45 /* Pods_Discover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Discover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62CC2299CF96074608F3F926 /* Pods-Discover-DiscoverUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discover-DiscoverUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Discover-DiscoverUITests/Pods-Discover-DiscoverUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6509055D1DF74A1D00656AB4 /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		6509E1CD1DE01C2200194F25 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		650F9F5F1DCDE023005700A2 /* Discover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Discover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650F9F621DCDE023005700A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				65C7FBE51DDFF6B700F078A4 /* MessagesCell.swift */,
 				65C7FBED1DDFF7C800F078A4 /* ChatViewController.swift */,
 				65C7FBEF1DDFF82300F078A4 /* PushNotification.swift */,
+				6509055D1DF74A1D00656AB4 /* UserLocationManager.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				65C7FBE81DDFF6F800F078A4 /* Messages.swift in Sources */,
 				650F9F911DCDE1B9005700A2 /* LoginViewController.swift in Sources */,
 				6509E1CE1DE01C2200194F25 /* MessagesViewController.swift in Sources */,
+				6509055E1DF74A1D00656AB4 /* UserLocationManager.swift in Sources */,
 				65C7FBE01DDFF3FD00F078A4 /* Constants.swift in Sources */,
 				650F9F931DCDE1CA005700A2 /* SignupViewController.swift in Sources */,
 				65C7FBE21DDFF58300F078A4 /* Utilities.swift in Sources */,

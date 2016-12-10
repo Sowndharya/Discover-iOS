@@ -18,10 +18,36 @@ class Utilities {
         
     }
     
+    class func homeScreenLaunch(_ target: AnyObject) {
+        
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController:UINavigationController = mainStoryBoard.instantiateInitialViewController() as! UINavigationController
+        let homeViewController = mainStoryBoard.instantiateViewController(withIdentifier: "HomeViewController")
+        navigationController.viewControllers = [homeViewController]
+        target.present(navigationController, animated: true, completion: nil)
+    }
+    
+    class func validateEmail(candidate: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
+    }
+    
     class func postNotification(_ notification: String) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: notification), object: nil)
     }
     
+    class func showAlertActionDefault(_ target: AnyObject, _ title: String, _ message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+        }
+        
+        alertController.addAction(okAction)
+        target.present(alertController, animated: true, completion: nil)
+
+    }
+        
     class func timeElapsed(_ seconds: TimeInterval) -> String {
         var elapsed: String
         if seconds < 60 {

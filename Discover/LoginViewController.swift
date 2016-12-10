@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 import Parse
+import CoreLocation
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, LocationUpdateProtocol {
     
     // MARK : Properties
     
+    let LocationMgr = UserLocationManager()
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+
     // MARK : Actions
     
     @IBAction func login(_ sender: UIButton) {
@@ -24,8 +26,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.login()
     }
     
+    
     func login() {
         
+        print("Initializing location manager delegate")
+        LocationMgr.delegate = self
+        LocationMgr.getLocation()
+    }
+    
+    func locationDidUpdateToLocation(location: CLLocationCoordinate2D, placemark: CLPlacemark) {
+        
+        print("Inside locationDidUpdate To location")
+        loginForParse(location, placemark)
+    }
+
+    
+    func loginForParse(_ locationCoordinates: CLLocationCoordinate2D, _ userAddress: CLPlacemark){
+        
+        print("login for parse")
         var email = self.emailTextField.text
         var password = self.passwordTextField.text
         
@@ -33,27 +51,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Validate the text fields
         if (email?.characters.count)! < 5  {
             
-            let alertController = UIAlertController(title: "Invalid", message: "Email must be greater than 5 characters", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                print("OK")
-            }
-            
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
-            
+            Utilities.showAlertActionDefault(self, "Invalid", "Email must be greater than 5 characters")
             
         } else if (password?.characters.count)! < 8 {
             
-            let alertController = UIAlertController(title: "Invalid", message: "Password must be greater than 8 characters", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                print("OK")
-            }
-            
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
-            
+            Utilities.showAlertActionDefault(self, "Invalid", "Password must be greater than 8 characters")
         } else {
             
             // Run a spinner to show a task in progress
@@ -62,35 +64,43 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             
             // Send a request to login
+            let point = PFGeoPoint(latitude:locationCoordinates.latitude, longitude:locationCoordinates.longitude)
             
             PFUser.logInWithUsername(inBackground: email!, password: password!, block: { (user, error) -> Void in
                 
-                PushNotication.parsePushUserAssign()
+                if error == nil {
+                    
                 
-                // Stop the spinner
+                    print("parse login with username")
+                    PushNotication.parsePushUserAssign()
                 
-                spinner.stopAnimating()
+                    // Stop the spinner
+                    print(point)
+                    spinner.stopAnimating()
                 
-                if ((user) != nil) {
+                    if ((user) != nil) {
+                        user?[PF_USER_LOCATION] = point
                     
-                    self.dismiss(animated: true, completion: nil)
+                        user?[PF_USER_LOCALITY] = userAddress.locality
+                        user?[PF_USER_ADMINISTRATIVE_AREA] = userAddress.administrativeArea
+                        user?[PF_USER_COUNTRY] = userAddress.country
+                        user?[PF_USER_POSTAL_CODE] = userAddress.postalCode
+                        user?.saveInBackground()
+                
+                        Utilities.homeScreenLaunch(self)
+                    } else {
                     
-                } else {
-                    
-                    // Error in login
-                    let alertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-                        print("OK")
+                        // Error in login
+                        Utilities.showAlertActionDefault(self, "Error", (error?.localizedDescription)!)
                     }
-                    
-                    alertController.addAction(okAction)
-                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    Utilities.showAlertActionDefault(self, "Error", (error?.localizedDescription)!)
                 }
             })
         }
 
     }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -98,6 +108,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard)))
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -133,7 +144,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             self.login()
         }
-        
         return true
     }
+
 }
